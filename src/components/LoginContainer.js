@@ -1,14 +1,14 @@
 import React from 'react';
-import EventsList from './EventsList'
+import Login from './Login'
 // import { connect } from 'react-redux'
 // import { createGame } from '../actions'
 
-class EventsListContainer extends React.Component {
+class LoginContainer extends React.Component {
   render() {
     return (
-      <EventsList/>
+      <Login/>
     )
   }
 }
 
-export default EventsListContainer;
+export default LoginContainer;
