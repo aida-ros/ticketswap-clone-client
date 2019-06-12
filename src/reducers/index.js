@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { EVENTS_FETCHED } from '../actions';
+import { EVENTS_FETCHED, EVENT_FETCHED } from '../actions';
 
 const events = (state = [], action) => {
   switch (action.type) {
@@ -10,8 +10,18 @@ const events = (state = [], action) => {
   }
 }
 
+export const event = (state = [], action) => {
+  switch (action.type) {
+    case EVENT_FETCHED:
+      return action.event
+    default:
+      return state
+  }
+}
+
 const reducer = combineReducers({ 
-  events
+  events,
+  event
 })
 
 export default reducer;

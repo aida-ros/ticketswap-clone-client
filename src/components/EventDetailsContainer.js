@@ -1,9 +1,15 @@
 import React from 'react';
 import EventDetails from './EventDetails'
 import { connect } from 'react-redux'
-import { getEvents } from '../actions'
+import { getEvent } from '../actions'
 
 class EventDetailsContainer extends React.Component {
+  componentDidMount = () => {
+    console.log(this.props)
+    const id = this.props.match.params.id
+    console.log(id)
+    this.props.getEvent(id)
+  }
 
   render() {
     return (
@@ -15,11 +21,11 @@ class EventDetailsContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events
+  event: state.event
 })
 
 const mapDispatchToProps = {
-  getEvents
+  getEvent
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetailsContainer)
