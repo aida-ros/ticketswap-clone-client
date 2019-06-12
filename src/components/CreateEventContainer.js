@@ -1,18 +1,14 @@
 import React from 'react';
 import CreateEvent from './CreateEvent'
+import { connect } from 'react-redux'
+import { createEvent } from '../actions'
 
 class CreateEventContainer extends React.Component {
-  state = {
-    name: '',
-    image: '',
-    description: '',
-    start: '',
-    end: ''
-  }
+  state = {}
 
   onChange = (event) => {
-    console.log("EVENT.TARGET.NAME", event.target.name)
-    console.log("EVENT.TARGET.VALUE", event.target.value)
+    // console.log("EVENT.TARGET.NAME", event.target.name)
+    // console.log("EVENT.TARGET.VALUE", event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -39,4 +35,8 @@ class CreateEventContainer extends React.Component {
   }
 }
 
-export default CreateEventContainer;
+const mapDispatchToProps = {
+  createEvent
+}
+
+export default connect(null, mapDispatchToProps)(CreateEventContainer)
