@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="routes">
       <Route exact path="/" render={() => <Redirect to="/login" />} />
-      <h1>Welcome!</h1>
+      
       <Route exact path="/login" component={LoginContainer} />
       {/* <Route exact path="/signup" component={...} /> */}
       <Route exact path="/events" component={EventsListContainer} />
