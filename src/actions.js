@@ -2,6 +2,7 @@ import request from 'superagent'
 
 const baseUrl = 'http://localhost:4000'
 
+// Fetches and dispatches all events
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 const eventsFetched = events => ({
   type: EVENTS_FETCHED,
@@ -9,6 +10,7 @@ const eventsFetched = events => ({
 })
 
 export const getEvents = () => (dispatch) => {
+  console.log('wascalled')
   request(`${baseUrl}/events`)
     .then(response => {
       // console.log(response.body)
@@ -19,10 +21,11 @@ export const getEvents = () => (dispatch) => {
     .catch(console.error)
 }
 
-export const EVENT_FETCHED = 'EVENTS_FETCHED'
-const eventFetched = events => ({
-  type: EVENTS_FETCHED,
-  payload: events
+// Fetches and dispatches a single event
+export const EVENT_FETCHED = 'EVENT_FETCHED'
+const eventFetched = event => ({
+  type: EVENT_FETCHED,
+  payload: event
 })
 
 export const getEvent = (id) => (dispatch) => {
@@ -30,9 +33,9 @@ export const getEvent = (id) => (dispatch) => {
   request(`${baseUrl}/events/${id}`)
     .then(response => {
       // console.log(response.body)
-      const allEvents = response.body.events
-      // console.log(allEvents)
-      dispatch(eventFetched(allEvents))
+      const event = response.body.event
+      console.log('EVENT', event)
+      dispatch(eventFetched(event))
     })
     .catch(console.error)
 }
