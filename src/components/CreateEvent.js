@@ -24,7 +24,7 @@ class CreateEvent extends React.Component {
                 onChange={onChange}
                 type="url"
                 placeholder="http://www.example-url.com'" 
-                name="url" />
+                name="image" />
             </label>
             <br />
 

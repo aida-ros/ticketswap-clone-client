@@ -39,3 +39,23 @@ export const getEvent = (id) => (dispatch) => {
     })
     .catch(console.error)
 }
+
+// Creates a new event
+
+export const EVENT_CREATE_SUCCESS = 'EVENT_CREATE_SUCCESS'
+const eventCreateSuccess = event => ({
+  type: EVENT_CREATE_SUCCESS,
+  payload: event
+})
+
+export const createEvent = (data) => (dispatch) => {
+  console.log('DATA RECEIVED:', data)
+  request
+    .post(`${baseUrl}/events`)
+    .send(data)
+    .then(response => {
+      console.log("RESPONSE BODY:", response.body)
+      dispatch(eventCreateSuccess(response.body))
+    })
+    
+}
