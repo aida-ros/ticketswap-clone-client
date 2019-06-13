@@ -3,60 +3,77 @@ import { connect } from 'react-redux'
 import { getEvents, getEvent, getTicket, getTickets, getComments } from '../actions'
 
 class RiskRate extends React.Component {
-  componentWillMount = async () => {
-    console.log('RISKRATE MOUNTED')
+  componentWillMount =  () => {
     const id = this.props.ticketId
-    await this.props.getTickets()
-    await this.props.getTicket(id)
-    await this.props.getComments(id)
+    this.props.getTickets()
+    this.props.getTicket(id)
+    this.props.getComments(id)
   }
 
-  calculateRisk = (props) => {
-    const risk = 0
-    console.log("PROOOOPS", props)
-    const totalPrice = props.tickets.reduce((prevPrice, nextPrice) => {
-      return prevPrice + nextPrice
-    })
+  calculateRisk = (average, ticket) => {
+    let risk = 0
+    const price = parseInt(ticket.price)
+    console.log('TICKET PRICE', price)
+    
+    if (price < average) {
+      const difference = average - price
+      risk = risk + difference
+      console.log('NEW RISK', risk)
+    } 
+    else if (price > average) {
+      let difference = price - average
+      console.log('DIFFERENCE', difference)
+        if (difference > 10) {
+          risk = risk - 10
+        } else {
+          risk = risk - difference
+        }
+      console.log('NEW RISK', risk)
+      
+    }
+
     if (risk < 5) {
-      return 5
+      return risk = 5
     }
 
     if (risk > 95) {
-      return 95
+      return risk = 95
     }
+    return risk
   }
 
-  totalPrice = (tickets, ticket) => {
-    console.log('totalPrice being calculated')
+  averagePrice = (tickets, ticket) => {
     const eventTickets = tickets.filter(currentTicket => {
       if (ticket.eventId === currentTicket.eventId) {
         parseInt(currentTicket.price)
         return currentTicket
       }
     })
-
     console.log('EVENT TICKETS', eventTickets)
-    
+
     const totalPrice = eventTickets.reduce((prevTicket, nextTicket) => {
       return parseInt(prevTicket.price) + parseInt(nextTicket.price)
     })
-    return totalPrice
+    console.log('TOTAL PRICE', totalPrice)
+
+    return totalPrice / eventTickets.length
   }
 
   render() {
-    if (this.props.tickets.length > 0 && this.props.ticket.length !== 0) {
-      const totalPrice = this.totalPrice(this.props.tickets, this.props.ticket)
-      console.log(totalPrice)
+    const { tickets, ticket } = this.props
+
+    const checkProps = () => {
+      if (tickets.length > 0 && ticket.length !== 0) {
+        const average = this.averagePrice(tickets, ticket)
+        console.log('AVERAGE PRICE', average)
+        const riskRate = this.calculateRisk(average, ticket)
+        console.log('FINAL RISK RATE:', riskRate)
+        return riskRate
+      }
     }
 
-    // if (this.props.comments >= 0) {
-    //   console.log('COMMENTS', this.props.comments)
-    // }
-    
-
-    console.log('RISKRATE CHECK')
     return (
-      <h1>Total risk: {this.risk}%</h1>
+      <h1>Total risk: {checkProps()} %</h1>
 
     )
   }
