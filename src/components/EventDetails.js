@@ -4,6 +4,7 @@ class EventDetails extends React.Component {
 
   render() {
     const event = this.props.event
+    const tickets = this.props.tickets
 
     function showEvent(event) {
       if (!event) {
@@ -17,9 +18,26 @@ class EventDetails extends React.Component {
       </div>
     }
 
+    function availableTickets(tickets) {
+      if (!tickets) {
+        return <p>Loading available tickets...</p>
+      }
+
+      return tickets.map(ticket => {
+        if (ticket.eventId === event.id) {
+          return <li>€{ticket.price} submitted by {ticket.userId}</li>
+        }
+
+      })
+    }
+
     return (
       <main>
         {showEvent(event)}
+        <br/>
+        
+        <h2>Available tickets</h2>
+        {availableTickets(tickets)}
       </main>
     );
   }

@@ -15,10 +15,11 @@ class EventDetailsContainer extends React.Component {
   }
 
   render() {
-    console.log('THIS PROPS EVENT', this.props.event)
+    console.log('THIS PROPS tickets', this.props.tickets)
     return (
       <EventDetails
         event={this.props.event}
+        tickets={this.props.tickets}
       />
     )
   }
