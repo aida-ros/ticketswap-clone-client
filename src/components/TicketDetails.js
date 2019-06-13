@@ -1,19 +1,22 @@
 import React from "react";
 import { calculateRisk } from '../riskCalculator'
+import RiskRate from "./RiskRate";
 
 class TicketDetails extends React.Component {
 
   render() {
-    const ticket = this.props.ticket
-    const comments = this.props.comments
+    const { ticket, comments, ticketId } = this.props
 
     function showTicket (ticket) {
       if (!ticket) {
         return <p>Loading ticket details...</p>
       }
       return <div>
-        <h2>Ticket details</h2>
-        <h3>Risk: %</h3>
+        <h1>Ticket details</h1>
+
+        <RiskRate
+          ticketId={ticketId}
+          />
         <br/>
 
         <h4>Price</h4>

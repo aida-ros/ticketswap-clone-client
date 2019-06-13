@@ -10,6 +10,17 @@ class RiskRate extends React.Component {
     this.props.getComments(id)
   }
 
+  checkProps = () => {
+    const { tickets, ticket } = this.props
+    if (tickets.length > 0 && ticket.length !== 0) {
+      const average = this.averagePrice(tickets, ticket)
+      console.log('AVERAGE PRICE', average)
+      const riskRate = this.calculateRisk(average, ticket)
+      console.log('FINAL RISK RATE:', riskRate)
+      return riskRate
+    }
+  }
+
   calculateRisk = (average, ticket) => {
     let risk = 0
     const price = parseInt(ticket.price)
@@ -59,21 +70,10 @@ class RiskRate extends React.Component {
     return totalPrice / eventTickets.length
   }
 
-  render() {
-    const { tickets, ticket } = this.props
-
-    const checkProps = () => {
-      if (tickets.length > 0 && ticket.length !== 0) {
-        const average = this.averagePrice(tickets, ticket)
-        console.log('AVERAGE PRICE', average)
-        const riskRate = this.calculateRisk(average, ticket)
-        console.log('FINAL RISK RATE:', riskRate)
-        return riskRate
-      }
-    }
+  render() { 
 
     return (
-      <h1>Total risk: {checkProps()} %</h1>
+      <h3>Total risk: {this.checkProps()}%</h3>
 
     )
   }

@@ -44,17 +44,14 @@ class TicketDetailsContainer extends React.Component {
   }
 
   render() {
-    const ticket = this.props.ticket
-    const comments = this.props.comments
+    const { ticket, comments } = this.props
 
     return (
       <div>
-        <RiskRate
-          ticketId={this.props.match.params.id}/>
         <TicketDetails
           ticket={ticket}
           comments={comments}
-          riskRate={this.calculateRisk}
+          ticketId={this.props.match.params.id}
            />
         <CommentForm
           onChange={this.onChange}
