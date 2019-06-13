@@ -161,3 +161,19 @@ export const addComment = (contents) => dispatch => {
       console.log('DISPATCHED COMMENT:', contents.comment)
     })
 }
+
+export const COMMENTS_FETCHED = 'COMMENTS_FETCHED'
+const commentsFetched = comments => ({
+  type: COMMENTS_FETCHED,
+  payload: comments
+})
+
+export const getComments = (id) => (dispatch) => {
+  request(`${baseUrl}/comments/${id}`)
+    .then(response => {
+      console.log('FETCH COMMENTS RESPONSE.BODY:', response.body)
+      const comments = response.body.comments
+      dispatch(commentsFetched(comments))
+    })
+    .catch(console.error)
+}

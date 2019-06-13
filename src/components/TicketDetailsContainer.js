@@ -2,7 +2,7 @@ import React from 'react';
 import TicketDetails from './TicketDetails.js'
 import CommentForm from './CommentForm'
 import { connect } from 'react-redux'
-import { getTicket, addComment } from '../actions'
+import { getTicket, addComment, getComments } from '../actions'
 
 class TicketDetailsContainer extends React.Component {
   state = {
@@ -13,6 +13,7 @@ class TicketDetailsContainer extends React.Component {
   componentDidMount = () => {
     const id = this.props.match.params.id
     this.props.getTicket(id)
+    this.props.getComments(id)
   }
 
   onChange = event => {
@@ -33,10 +34,14 @@ class TicketDetailsContainer extends React.Component {
 
   render() {
     const ticket = this.props.ticket
+    const comments = this.props.comments
+
     return (
       <div>
         <TicketDetails
-          ticket={ticket} />
+          ticket={ticket}
+          comments={comments}
+           />
         <CommentForm
           onChange={this.onChange}
           onSubmit={this.onSubmit} />
@@ -47,12 +52,14 @@ class TicketDetailsContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ticket: state.ticket
+  ticket: state.ticket,
+  comments: state.comments
 })
 
 const mapDispatchToProps = {
   getTicket,
-  addComment
+  addComment,
+  getComments
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TicketDetailsContainer)
