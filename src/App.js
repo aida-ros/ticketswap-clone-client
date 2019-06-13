@@ -5,6 +5,7 @@ import EventsListContainer from './components/EventsListContainer'
 import EventDetailsContainer from './components/EventDetailsContainer'
 import CreateEventContainer from './components/CreateEventContainer'
 import LoginContainer from './components/LoginContainer';
+import SignUpContainer from './components/SignUpContainer'
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Route exact path="/" render={() => <Redirect to="/login" />} />
       
       <Route exact path="/login" component={LoginContainer} />
-      {/* <Route exact path="/signup" component={...} /> */}
+      <Route exact path="/signup" component={SignUpContainer} />
       <Route exact path="/events" component={EventsListContainer} />
       <Route exact path="/create" component={CreateEventContainer} />
 

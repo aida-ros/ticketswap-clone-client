@@ -9,7 +9,7 @@ class Login extends React.Component {
     return (
       <main>
         <div>
-          <h2>Log in</h2>
+          
           <form onSubmit={onSubmit}>
 
             <label>
@@ -38,7 +38,6 @@ class Login extends React.Component {
 
         <br />
         <div>
-          <Link to={`signup`}>Click here to create an account</Link>
           <br />
           <Link to={`events`}>...or proceed without an account</Link>
         </div>
