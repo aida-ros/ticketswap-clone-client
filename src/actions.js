@@ -143,3 +143,21 @@ export const getTicket = (id) => (dispatch) => {
     })
     .catch(console.error)
 }
+
+export const COMMENT_ADDED = 'COMMENT_ADDED'
+const commentAdded = comment => ({
+  type: COMMENT_ADDED,
+  payload: comment
+})
+
+export const addComment = (contents) => dispatch => {
+  console.log('COMMENT RECEIVED:', contents.comment)
+  request
+    .post(`${baseUrl}/comments`)
+    .send(contents)
+    .then(response => {
+      console.log('COMMENT RESPONSE.BODY:', response.body)
+      dispatch(commentAdded(contents.comment))
+      console.log('DISPATCHED COMMENT:', contents.comment)
+    })
+}
