@@ -2,6 +2,25 @@ import request from 'superagent'
 
 const baseUrl = 'http://localhost:4000'
 
+// Sends log in data
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+const loginSuccess = (jwt) => ({
+  type: LOGIN_SUCCESS,
+  payload: jwt
+})
+
+export const login = (username, password) => dispatch => {
+  request
+    .post(`${baseUrl}/users`)
+    .send({username, password})
+    .then(response => {
+      console.log('RESPONSE BODY:', response.body)
+      dispatch(loginSuccess(response.body.jwt))
+      console.log('LOGIN DISPATCHED')
+    })
+    .catch(console.error)
+}
+
 // Fetches and dispatches all events
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 const eventsFetched = events => ({
@@ -10,7 +29,6 @@ const eventsFetched = events => ({
 })
 
 export const getEvents = () => (dispatch) => {
-  console.log('wascalled')
   request(`${baseUrl}/events`)
     .then(response => {
       // console.log(response.body)
@@ -57,5 +75,4 @@ export const createEvent = (data) => (dispatch) => {
       console.log("RESPONSE BODY:", response.body)
       dispatch(eventCreateSuccess(response.body))
     })
-    
 }
