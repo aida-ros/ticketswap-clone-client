@@ -1,7 +1,7 @@
 import React from 'react';
 import EventDetails from './EventDetails'
 import { connect } from 'react-redux'
-import { getEvent } from '../actions'
+import { getEvent, getTickets } from '../actions'
 
 class EventDetailsContainer extends React.Component {
   componentDidMount = () => {
@@ -9,24 +9,30 @@ class EventDetailsContainer extends React.Component {
     const id = this.props.match.params.id
     console.log(id)
     this.props.getEvent(id)
+    
+    this.props.getTickets()
+    console.log(this.props.getTickets)
   }
 
   render() {
-    console.log('THIS PROPS EVENT', this.props.event)
+    console.log('THIS PROPS tickets', this.props.tickets)
     return (
       <EventDetails
         event={this.props.event}
+        tickets={this.props.tickets}
       />
     )
   }
 }
 
 const mapStateToProps = state => ({
-  event: state.event
+  event: state.event,
+  tickets: state.tickets
 })
 
 const mapDispatchToProps = {
-  getEvent
+  getEvent,
+  getTickets
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetailsContainer)

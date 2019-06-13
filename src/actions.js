@@ -17,7 +17,7 @@ export const login = (username, password) => dispatch => {
 
   request
     .post(`${baseUrl}/users`)
-    .send({username: name, password: pass})
+    .send({ username: name, password: pass })
     .then(response => {
       console.log('RESPONSE BODY:', response.body)
       dispatch(loginSuccess(response.body.jwt))
@@ -40,10 +40,10 @@ export const login = (username, password) => dispatch => {
 // })
 
 export const signup = (username, password) => dispatch => {
-  
+
   request
     .post(`${baseUrl}/users`)
-    .send({username, password})
+    .send({ username, password })
     .then(response => {
       console.log('RESPONSE BODY:', response.body)
       // dispatch(signupSuccess(response.body.jwt))
@@ -106,4 +106,21 @@ export const createEvent = (data) => (dispatch) => {
       console.log("RESPONSE BODY:", response.body)
       dispatch(eventCreateSuccess(response.body))
     })
+}
+
+export const TICKETS_FETCHED = 'TICKETS_FETCHED'
+const ticketsFetched = tickets => ({
+  type: TICKETS_FETCHED,
+  payload: tickets
+})
+
+export const getTickets = () => (dispatch) => {
+  request(`${baseUrl}/tickets`)
+    .then(response => {
+      console.log(response.body)
+      const allTickets = response.body.tickets
+      console.log(allTickets)
+      dispatch(ticketsFetched(allTickets))
+    })
+    .catch(console.error)
 }
