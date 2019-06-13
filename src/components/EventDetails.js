@@ -1,4 +1,6 @@
 import React from "react";
+import { Route, Link } from 'react-router-dom'
+import TicketDetailsContainer from './TicketDetailsContainer'
 
 class EventDetails extends React.Component {
 
@@ -25,9 +27,8 @@ class EventDetails extends React.Component {
 
       return tickets.map(ticket => {
         if (ticket.eventId === event.id) {
-          return <li>€{ticket.price} submitted by {ticket.userId}</li>
+          return <Link to={`tickets/${ticket.id}`} key={ticket.id}>€{ticket.price} submitted by userId{ticket.userId}</Link>
         }
-
       })
     }
 
@@ -35,7 +36,7 @@ class EventDetails extends React.Component {
       <main>
         {showEvent(event)}
         <br/>
-        
+
         <h2>Available tickets</h2>
         {availableTickets(tickets)}
       </main>

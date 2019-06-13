@@ -6,6 +6,7 @@ import EventDetailsContainer from './components/EventDetailsContainer'
 import CreateEventContainer from './components/CreateEventContainer'
 import LoginContainer from './components/LoginContainer';
 import SignUpContainer from './components/SignUpContainer'
+import TicketDetailsContainer from './components/TicketDetailsContainer';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <Route exact path="/create" component={CreateEventContainer} />
 
       <Route exact path="/events/:id" component={EventDetailsContainer} />
-      {/* <Route exact path="/tickets/:id" component={...} /> */}
+      <Route exact path="/events/tickets/:id" component={TicketDetailsContainer} />
     </div>
   );
 }
