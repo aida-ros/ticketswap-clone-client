@@ -3,12 +3,14 @@ import { events } from './events'
 import { event } from './event'
 import { currentUser } from './currentUser'
 import { tickets } from './tickets'
+import { ticket } from './ticket'
 
 const reducer = combineReducers({ 
   events,
   event,
   currentUser,
-  tickets
+  tickets,
+  ticket
 })
 
 export default reducer;

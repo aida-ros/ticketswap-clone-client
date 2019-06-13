@@ -78,7 +78,7 @@ const eventFetched = event => ({
 })
 
 export const getEvent = (id) => (dispatch) => {
-  console.log('ID RECEIVED:', id)
+  console.log('EVENT ID RECEIVED:', id)
   request(`${baseUrl}/events/${id}`)
     .then(response => {
       // console.log(response.body)
@@ -90,7 +90,6 @@ export const getEvent = (id) => (dispatch) => {
 }
 
 // Creates a new event
-
 export const EVENT_CREATE_SUCCESS = 'EVENT_CREATE_SUCCESS'
 const eventCreateSuccess = event => ({
   type: EVENT_CREATE_SUCCESS,
@@ -98,7 +97,7 @@ const eventCreateSuccess = event => ({
 })
 
 export const createEvent = (data) => (dispatch) => {
-  console.log('DATA RECEIVED:', data)
+  console.log('EVENT DATA RECEIVED:', data)
   request
     .post(`${baseUrl}/events`)
     .send(data)
@@ -108,6 +107,7 @@ export const createEvent = (data) => (dispatch) => {
     })
 }
 
+// Fetches all tickets
 export const TICKETS_FETCHED = 'TICKETS_FETCHED'
 const ticketsFetched = tickets => ({
   type: TICKETS_FETCHED,
@@ -121,6 +121,25 @@ export const getTickets = () => (dispatch) => {
       const allTickets = response.body.tickets
       console.log(allTickets)
       dispatch(ticketsFetched(allTickets))
+    })
+    .catch(console.error)
+}
+
+// Fetches and dispatches single Ticket
+export const TICKET_FETCHED = 'TICKET_FETCHED'
+const ticketFetched = ticket => ({
+  type: TICKET_FETCHED,
+  payload: ticket
+})
+
+export const getTicket = (id) => (dispatch) => {
+  console.log('TICKET ID RECEIVED:', id)
+  request(`${baseUrl}/events/tickets/${id}`)
+    .then(response => {
+      // console.log(response.body)
+      const ticket = response.body.ticket
+      console.log('TICKET', ticket)
+      dispatch(ticketFetched(ticket))
     })
     .catch(console.error)
 }
