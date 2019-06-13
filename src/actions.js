@@ -10,9 +10,14 @@ const loginSuccess = (jwt) => ({
 })
 
 export const login = (username, password) => dispatch => {
+  console.log("LOGIN FUNCTION")
+  console.log()
+  const name = username
+  const pass = password
+
   request
     .post(`${baseUrl}/users`)
-    .send({username, password})
+    .send({username: name, password: pass})
     .then(response => {
       console.log('RESPONSE BODY:', response.body)
       dispatch(loginSuccess(response.body.jwt))
@@ -21,6 +26,13 @@ export const login = (username, password) => dispatch => {
     .catch(console.error)
 }
 
+
+
+
+
+
+
+
 // export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 // const signupSuccess = (jwt) => ({
 //   type: SIGNUP_SUCCESS,
@@ -28,6 +40,7 @@ export const login = (username, password) => dispatch => {
 // })
 
 export const signup = (username, password) => dispatch => {
+  
   request
     .post(`${baseUrl}/users`)
     .send({username, password})

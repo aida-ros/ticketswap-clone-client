@@ -14,6 +14,7 @@ function App() {
       
       <Route exact path="/login" component={LoginContainer} />
       <Route exact path="/signup" component={SignUpContainer} />
+      
       <Route exact path="/events" component={EventsListContainer} />
       <Route exact path="/create" component={CreateEventContainer} />
 
