@@ -1,4 +1,5 @@
 import React from "react";
+import { calculateRisk } from '../riskCalculator'
 
 class TicketDetails extends React.Component {
 
@@ -12,7 +13,7 @@ class TicketDetails extends React.Component {
       }
       return <div>
         <h2>Ticket details</h2>
-        <h3>Risk: X%</h3>
+        <h3>Risk: %</h3>
         <br/>
 
         <h4>Price</h4>
@@ -35,7 +36,7 @@ class TicketDetails extends React.Component {
         return <p>No comments have been added yet</p>
       }
       return comments.map(comment => 
-        <p>{comment.content}</p>
+        <p key={comment.id}>Commented at {comment.createdAt}:<br/> {comment.content}</p>
         )
     }
 
@@ -43,6 +44,8 @@ class TicketDetails extends React.Component {
       <main>
         {showTicket(ticket)}
         {showImage(ticket)}
+        <br/>
+        <h3>Comments:</h3>
         {showComments(comments)}
       </main>
     );

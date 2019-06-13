@@ -5,7 +5,7 @@ import { getEvent, getTickets } from '../actions'
 
 class EventDetailsContainer extends React.Component {
   componentDidMount = () => {
-    console.log(this.props)
+    console.log("AAAAAAA", this.props.match.params.id)
     const id = this.props.match.params.id
     console.log(id)
     this.props.getEvent(id)
