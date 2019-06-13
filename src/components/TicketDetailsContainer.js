@@ -1,5 +1,6 @@
 import React from 'react';
 import TicketDetails from './TicketDetails.js'
+import RiskRate from './RiskRate'
 import CommentForm from './CommentForm'
 import { connect } from 'react-redux'
 import { getTicket, addComment, getComments } from '../actions'
@@ -8,12 +9,6 @@ class TicketDetailsContainer extends React.Component {
   state = {
     comment: '',
     ticketId: this.props.match.params.id
-  }
-  
-  componentDidMount = () => {
-    const id = this.props.match.params.id
-    this.props.getTicket(id)
-    this.props.getComments(id)
   }
 
   onChange = event => {
@@ -32,15 +27,34 @@ class TicketDetailsContainer extends React.Component {
     })
   };
 
+  calculateRisk = () => {
+    const min = 5
+    const max = 95
+    const risk = 0
+
+    if (risk < 5) {
+      return min
+    }
+
+    if (risk > 95) {
+      return max
+    }
+    console.log('CALCULATION DONE')
+
+  }
+
   render() {
     const ticket = this.props.ticket
     const comments = this.props.comments
 
     return (
       <div>
+        <RiskRate
+          ticketId={this.props.match.params.id}/>
         <TicketDetails
           ticket={ticket}
           comments={comments}
+          riskRate={this.calculateRisk}
            />
         <CommentForm
           onChange={this.onChange}

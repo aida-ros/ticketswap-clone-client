@@ -117,9 +117,7 @@ const ticketsFetched = tickets => ({
 export const getTickets = () => (dispatch) => {
   request(`${baseUrl}/tickets`)
     .then(response => {
-      console.log(response.body)
       const allTickets = response.body.tickets
-      console.log(allTickets)
       dispatch(ticketsFetched(allTickets))
     })
     .catch(console.error)
@@ -133,12 +131,10 @@ const ticketFetched = ticket => ({
 })
 
 export const getTicket = (id) => (dispatch) => {
-  console.log('TICKET ID RECEIVED:', id)
   request(`${baseUrl}/events/tickets/${id}`)
     .then(response => {
       // console.log(response.body)
       const ticket = response.body.ticket
-      console.log('TICKET', ticket)
       dispatch(ticketFetched(ticket))
     })
     .catch(console.error)
@@ -171,7 +167,6 @@ const commentsFetched = comments => ({
 export const getComments = (id) => (dispatch) => {
   request(`${baseUrl}/comments/${id}`)
     .then(response => {
-      console.log('FETCH COMMENTS RESPONSE.BODY:', response.body)
       const comments = response.body.comments
       dispatch(commentsFetched(comments))
     })

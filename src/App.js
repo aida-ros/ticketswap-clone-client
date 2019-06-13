@@ -20,7 +20,7 @@ function App() {
       <Route exact path="/create" component={CreateEventContainer} />
 
       <Route exact path="/events/:id" component={EventDetailsContainer} />
-      <Route exact path="/events/tickets/:id" component={TicketDetailsContainer} />
+      <Route exact path="/events/:id/tickets/:id" component={TicketDetailsContainer} />
     </div>
   );
 }
