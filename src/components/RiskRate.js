@@ -26,19 +26,33 @@ class RiskRate extends React.Component {
     }
   }
 
+  totalPrice = (tickets, ticket) => {
+    console.log('totalPrice being calculated')
+    const eventTickets = tickets.filter(currentTicket => {
+      if (ticket.eventId === currentTicket.eventId) {
+        parseInt(currentTicket.price)
+        return currentTicket
+      }
+    })
+
+    console.log('EVENT TICKETS', eventTickets)
+    
+    const totalPrice = eventTickets.reduce((prevTicket, nextTicket) => {
+      return parseInt(prevTicket.price) + parseInt(nextTicket.price)
+    })
+    return totalPrice
+  }
+
   render() {
-    if (this.props.tickets.length > 0) {
-      console.log('TICKETS', this.props.tickets)
-      console.log('TICKETS were defined')
+    if (this.props.tickets.length > 0 && this.props.ticket.length !== 0) {
+      const totalPrice = this.totalPrice(this.props.tickets, this.props.ticket)
+      console.log(totalPrice)
     }
 
-    if (this.props.ticket.length !== 0) {
-      console.log('SINGLE TICKET', this.props.ticket)
-      console.log('SINGLE TICKET were defined')
-    }
-
-    if (this.props.comments)
-    console.log('COMMENTS', this.props.comments)
+    // if (this.props.comments >= 0) {
+    //   console.log('COMMENTS', this.props.comments)
+    // }
+    
 
     console.log('RISKRATE CHECK')
     return (
