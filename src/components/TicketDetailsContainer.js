@@ -10,8 +10,10 @@ class TicketDetailsContainer extends React.Component {
   }
 
   render() {
+    const ticket = this.props.ticket
     return (
-      <TicketDetails/>
+      <TicketDetails
+        ticket={ticket}/>
     )
   }
 }
