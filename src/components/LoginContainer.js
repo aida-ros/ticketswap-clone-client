@@ -25,7 +25,6 @@ class LoginContainer extends React.Component {
       username: '',
       password: ''
     })
-    console.log(this.state)
   };
 
   render() {

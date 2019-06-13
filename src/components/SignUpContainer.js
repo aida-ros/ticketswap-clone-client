@@ -20,7 +20,7 @@ class LoginContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     console.log('Form submitted!')
-    this.props.signup(this.state);
+    this.props.signup(this.state.username, this.state.password);
     this.setState({
       username: '',
       password: ''
