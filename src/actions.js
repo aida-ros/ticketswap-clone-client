@@ -143,3 +143,7 @@ export const getTicket = (id) => (dispatch) => {
     })
     .catch(console.error)
 }
+
+export const addComment = (id, comment) => dispatch => {
+  console.log('COMMENT RECEIVED:', id, comment)
+}
