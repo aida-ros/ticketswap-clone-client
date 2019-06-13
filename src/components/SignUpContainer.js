@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './Login'
 import { connect } from 'react-redux'
-import { login } from '../actions'
+import { signup } from '../actions'
 import { Link } from "react-router-dom";
 
 class LoginContainer extends React.Component {
@@ -20,7 +20,7 @@ class LoginContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     console.log('Form submitted!')
-    this.props.login(this.state.username, this.state.password);
+    this.props.signup(this.state);
     this.setState({
       username: '',
       password: ''
@@ -31,19 +31,19 @@ class LoginContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>Log in</h1>
+        <h1>Sign up</h1>
         <Login
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
-        <Link to={`signup`}>Click here to create an account</Link>
+        <Link to={`login`}>Already have an account? Click here to log in</Link>
       </div>
     )
   }
 }
 
 const mapDispatchToProps = {
-  login
+  signup
 }
 
 export default connect(null, mapDispatchToProps)(LoginContainer);

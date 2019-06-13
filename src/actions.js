@@ -21,6 +21,24 @@ export const login = (username, password) => dispatch => {
     .catch(console.error)
 }
 
+// export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
+// const signupSuccess = (jwt) => ({
+//   type: SIGNUP_SUCCESS,
+//   payload: jwt
+// })
+
+export const signup = (username, password) => dispatch => {
+  request
+    .post(`${baseUrl}/users`)
+    .send({username, password})
+    .then(response => {
+      console.log('RESPONSE BODY:', response.body)
+      // dispatch(signupSuccess(response.body.jwt))
+      // console.log('SIGNUP DISPATCHED')
+    })
+    .catch(console.error)
+}
+
 // Fetches and dispatches all events
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 const eventsFetched = events => ({
