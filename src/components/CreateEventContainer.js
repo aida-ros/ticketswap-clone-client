@@ -18,11 +18,7 @@ class CreateEventContainer extends React.Component {
     event.preventDefault()
     console.log('Form submitted!')
     this.props.createEvent(this.state)
-    this.setState({
-      name: '',
-      date: '',
-      description: ''
-    })
+    this.setState({})
   }
 
   render() {
