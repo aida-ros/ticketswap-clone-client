@@ -19,12 +19,15 @@ class RiskRate extends React.Component {
       const difference = average - price
       risk = risk + difference
       console.log('NEW RISK', risk)
-    } else if (price > average) {
+    } 
+    else if (price > average) {
       let difference = price - average
-      if (difference >= 10) {
-        return difference = 10
-      }
-      risk = risk - difference
+      console.log('DIFFERENCE', difference)
+        if (difference > 10) {
+          risk = risk - 10
+        } else {
+          risk = risk - difference
+        }
       console.log('NEW RISK', risk)
       
     }
