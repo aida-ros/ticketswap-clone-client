@@ -1,10 +1,10 @@
 import React from "react";
-import { Route, Link } from 'react-router-dom'
 
 class TicketDetails extends React.Component {
 
   render() {
     const ticket = this.props.ticket
+    const comments = this.props.comments
 
     function showTicket (ticket) {
       if (!ticket) {
@@ -30,10 +30,20 @@ class TicketDetails extends React.Component {
       return
     }
 
+    function showComments (comments) {
+      if (!comments) {
+        return <p>No comments have been added yet</p>
+      }
+      return comments.map(comment => 
+        <p>{comment.content}</p>
+        )
+    }
+
     return (
       <main>
         {showTicket(ticket)}
         {showImage(ticket)}
+        {showComments(comments)}
       </main>
     );
   }
