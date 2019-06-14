@@ -5,6 +5,7 @@ import { currentUser } from './currentUser'
 import { tickets } from './tickets'
 import { ticket } from './ticket'
 import { comments } from './comments'
+import { riskRate } from './risk'
 
 const reducer = combineReducers({ 
   events,
@@ -12,7 +13,8 @@ const reducer = combineReducers({
   currentUser,
   tickets,
   ticket,
-  comments
+  comments,
+  riskRate
 })
 
 export default reducer;
