@@ -14,14 +14,15 @@ class RiskRate extends React.Component {
     const { tickets, ticket } = this.props
     if (tickets.length > 0 && ticket.length !== 0) {
       const average = this.averagePrice(tickets, ticket)
-      console.log('AVERAGE PRICE', average)
-      const riskRate = this.calculateRisk(average, ticket)
-      console.log('FINAL RISK RATE:', riskRate)
-      return riskRate
+      const priceRisk = this.priceRisk(average, ticket)
+      console.log('FINAL PRICE RISK:', priceRisk)
+      return priceRisk
     }
   }
+  
 
-  calculateRisk = (average, ticket) => {
+
+  priceRisk = (average, ticket) => {
     let risk = 0
     const price = parseInt(ticket.price)
     console.log('TICKET PRICE', price)
