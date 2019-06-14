@@ -130,12 +130,20 @@ const ticketFetched = ticket => ({
   payload: ticket
 })
 
+export const RISK_CALCULATED = 'RISK_CALCULATED'
+const riskCalculated = riskRate => ({
+  type: RISK_CALCULATED,
+  payload: riskRate
+})
+
 export const getTicket = (id) => (dispatch) => {
   request(`${baseUrl}/events/tickets/${id}`)
     .then(response => {
-      // console.log(response.body)
+      console.log('VERRRRY IMPORTANTE', response.body)
       const ticket = response.body.ticket
+      const riskRate = response.body.riskRate
       dispatch(ticketFetched(ticket))
+      dispatch(riskCalculated(riskRate))
     })
     .catch(console.error)
 }
