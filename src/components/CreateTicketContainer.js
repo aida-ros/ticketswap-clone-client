@@ -8,7 +8,6 @@ class CreateTicketContainer extends React.Component {
     price: '',
     image: '',
     description: '',
-    eventName: ''
   }
 
   componentWillMount = () => {
