@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 
 class EventsList extends React.Component {
 
@@ -14,24 +16,38 @@ class EventsList extends React.Component {
       return events.map(event =>
         <li key={event.id}>
           <Link to={`events/${event.id}`}>
-            {event.name}<br/>
+            {event.name}<br />
           </Link>
-            Starting on: {event.start}
+          Starting on: {event.start}
         </li>)
     }
 
     return (
-      <main>
-        <Link to={`create/event`}>Create new event</Link>
-        <br/>
-        <Link to={`create/ticket`}>Submit a ticket for an existing event</Link>
-        <div className="eventslist">
-          <h1>All available events</h1>
-          <ul>
-            {showEvents(events)}
-          </ul>
-        </div>
-      </main>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <main>
+          <Link to={`create/event`}>Create new event</Link>
+          <br />
+          <br/>
+          <Link to={`create/ticket`}>Submit a ticket for an existing event</Link>
+          <div className="eventslist">
+            <br />
+            <Typography variant="h2">
+              All available events
+            </Typography>
+            <ul>
+              {showEvents(events)}
+            </ul>
+          </div>
+        </main>
+
+      </Grid>
+
+
     );
   }
 }

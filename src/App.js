@@ -8,10 +8,12 @@ import CreateTicketContainer from './components/CreateTicketContainer'
 import LoginContainer from './components/LoginContainer';
 import SignUpContainer from './components/SignUpContainer'
 import TicketDetailsContainer from './components/TicketDetailsContainer';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
   return (
     <div className="routes">
+       {/* <CssBaseline /> */}
       <Route exact path="/" render={() => <Redirect to="/login" />} />
       
       <Route exact path="/login" component={LoginContainer} />
