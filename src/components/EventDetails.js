@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 
 class EventDetails extends React.Component {
 
@@ -12,7 +14,9 @@ class EventDetails extends React.Component {
         return <p>Loading event details...</p>
       }
       return <div>
-        <h1>Event details</h1>
+        <Typography variant="h2">
+          Event details
+        </Typography>
         <p>Name: {event.name}</p>
         <p>Date: {event.start} - {event.end}</p>
         <p>Description: {event.description}</p>
@@ -26,24 +30,35 @@ class EventDetails extends React.Component {
 
       return tickets.map(ticket => {
         if (ticket.eventId === event.id) {
-          return <Link 
-            to={`${event.id}/tickets/${ticket.id}`} 
+          return <Link
+            to={`${event.id}/tickets/${ticket.id}`}
             key={ticket.id}>
-              €{ticket.price} submitted by userId{ticket.userId} <br/>
+            €{ticket.price} submitted by userId{ticket.userId} <br />
           </Link>
         }
       })
     }
 
     return (
-      <main>
-        <Link to={`create/ticket`}>Submit ticket for this event</Link>
-        {showEvent(event)}
-        <br/>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <main>
+          {/* <a href="create/ticket">Submit ticket for this event</a> */}
+          {showEvent(event)}
+          <br />
+          
+          <Typography variant="h4">
+              Available tickets
+          </Typography>
+          {availableTickets(tickets)}
+        </main>
+      </Grid>
 
-        <h2>Available tickets</h2>
-        {availableTickets(tickets)}
-      </main>
+
     );
   }
 }

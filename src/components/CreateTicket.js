@@ -1,4 +1,7 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 
 class CreateTicket extends React.Component {
 
@@ -13,57 +16,74 @@ class CreateTicket extends React.Component {
     }
 
     return (
-      <main>
-        <h1>Create new ticket</h1>
+      <Grid>
+        <main align='center'>
+          <Typography variant="h3">
+            Create new ticket
+          </Typography>
+          <div>
+            <form onSubmit={onSubmit}>
 
-        <div>
-          <form onSubmit={onSubmit}>
 
-            <h5>Select event</h5>
-            <select name="eventName">
-              {eventsMenu(events)}
-            </select>
-            <br />
 
-            <h5>Set price</h5>
-            <label>
-              <input
+              <h5>Select an event</h5>
+              <select name="eventName">
+                {eventsMenu(events)}
+              </select>
+              <br />
+
+              <h5>Set price</h5>
+              <TextField
+                id="outlined-name"
+                label="Price"
+                margin="normal"
+                variant="outlined"
                 onChange={onChange}
                 type="number"
                 step="any"
                 placeholder="Price"
-                name="price" />
-            </label>
-            <br />
+                name="price"
+              />
 
-            <h5>Submit an image (optional)</h5>
-            <label>
-              <input
+              <br />
+
+              <h5>Submit an image (optional)</h5>
+              <TextField
+                id="outlined-name"
+                label="Image URL"
+                margin="normal"
+                variant="outlined"
                 onChange={onChange}
                 type="url"
-                placeholder="http://www.example-url.com'"
-                name="image" />
-            </label>
-            <br />
+                step="any"
+                placeholder="Price"
+                name="image"
+              />
 
-            <h5>Add a description</h5>
-            <label>
-              <input
+              <br />
+
+              <h5>Add a description</h5>
+              <TextField
+                id="outlined-name"
+                label="Description"
+                margin="normal"
+                variant="outlined"
                 onChange={onChange}
                 type="text"
+                step="any"
                 placeholder="Description"
-                name="description" />
-            </label>
-            <br />
-            <br />
+                name="description"
+              />
 
-            <input type="submit" value="Submit" />
-          </form>
-        </div>
+              <br />
 
-        <a href="/events">Back to events list</a>
-
-      </main>
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+          <br/>
+          <a href="/events">Back to events list</a>
+        </main>
+      </Grid>
     )
   }
 }
