@@ -60,6 +60,8 @@ class CreateTicket extends React.Component {
             <input type="submit" value="Submit" />
           </form>
         </div>
+        
+        <a href="/events">Back to events list</a>
 
       </main>
     )
