@@ -4,12 +4,11 @@ import { connect } from 'react-redux'
 import { getEvents, createTicket } from '../actions'
 
 class CreateTicketContainer extends React.Component {
-  state = {
-    // only for demo purposes
-    user: null,
+  state = { 
     price: '',
     image: '',
-    description: ''
+    description: '',
+    eventName: ''
   }
 
   componentWillMount = () => {
@@ -17,8 +16,8 @@ class CreateTicketContainer extends React.Component {
   }
 
   onChange = (event) => {
-    // console.log("EVENT.TARGET.NAME", event.target.name)
-    // console.log("EVENT.TARGET.VALUE", event.target.value)
+    console.log("EVENT.TARGET.NAME", event.target.name)
+    console.log("EVENT.TARGET.VALUE", event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -29,10 +28,10 @@ class CreateTicketContainer extends React.Component {
     console.log('Ticket submitted!')
     this.props.createTicket(this.state)
     this.setState({
-      user: null,
       price: '',
       image: '',
-      description: ''
+      description: '',
+      eventName: ''
     })
   }
 

@@ -9,7 +9,7 @@ class CreateTicket extends React.Component {
       if (!events) {
         return <p>Looking for active events...</p>
       }
-      return events.map(event => <option key={event.id}>{event.name}</option>)
+      return events.map(event => <option key={event.id} name={event.id}>{event.name}</option>)
     }
 
     return (
@@ -20,7 +20,7 @@ class CreateTicket extends React.Component {
           <form onSubmit={onSubmit}>
 
             <h5>Select event</h5>
-            <select>
+            <select onChange={onChange} name="eventName">
               {eventsMenu(events)}
             </select>
             <br />
