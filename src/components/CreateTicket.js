@@ -1,44 +1,57 @@
 import React from 'react';
 
 class CreateTicket extends React.Component {
+
   render() {
-    const onChange = this.props.onChange
-    const onSubmit = this.props.onSubmit
+    const { onChange, onSubmit, events } = this.props
+
+    function eventsMenu(events) {
+      if (!events) {
+        return <p>Looking for active events...</p>
+      }
+      return events.map(event => <option key={event.id}>{event.name}</option>)
+    }
 
     return (
       <main>
         <h1>Create new ticket</h1>
+
         <div>
           <form onSubmit={onSubmit}>
-      
-      
-      <select>Pick an event
-        <option></option>
-      </select>
 
+            <h5>Select event</h5>
+            <select>
+              {eventsMenu(events)}
+            </select>
+            <br />
+
+            <h5>Set price</h5>
             <label>
-              <input 
+              <input
                 onChange={onChange}
-                type="text" 
-                placeholder="Price" 
+                type="number"
+                step="any"
+                placeholder="Price"
                 name="price" />
             </label>
             <br />
 
+            <h5>Submit an image (optional)</h5>
             <label>
-              <input 
+              <input
                 onChange={onChange}
                 type="url"
-                placeholder="http://www.example-url.com'" 
+                placeholder="http://www.example-url.com'"
                 name="image" />
             </label>
             <br />
 
+            <h5>Add a description</h5>
             <label>
-              <input 
-                onChange={onChange} 
-                type="text" 
-                placeholder="Description" 
+              <input
+                onChange={onChange}
+                type="text"
+                placeholder="Description"
                 name="description" />
             </label>
             <br />

@@ -1,12 +1,12 @@
 import React from 'react';
 import CreateTicket from './CreateTicket'
 import { connect } from 'react-redux'
-import { getEvents } from '../actions'
+import { getEvents, createTicket } from '../actions'
 
 class CreateTicketContainer extends React.Component {
   state = {
     // only for demo purposes
-    user: this.userid || Math.floor(Math.random() * 86),
+    user: null,
     price: '',
     image: '',
     description: ''
@@ -27,8 +27,13 @@ class CreateTicketContainer extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     console.log('Ticket submitted!')
-    this.props.createEvent(this.state)
-    this.setState({})
+    this.props.createTicket(this.state)
+    this.setState({
+      user: null,
+      price: '',
+      image: '',
+      description: ''
+    })
   }
 
   render() {
@@ -36,6 +41,7 @@ class CreateTicketContainer extends React.Component {
       <CreateTicket
         onChange={this.onChange}
         onSubmit={this.onSubmit}
+        events={this.props.events}
       />
     )
   }
@@ -46,7 +52,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  getEvents
+  getEvents,
+  createTicket
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTicketContainer)
