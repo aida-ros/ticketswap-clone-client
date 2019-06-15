@@ -140,6 +140,23 @@ export const getTicket = (id) => (dispatch) => {
     .catch(console.error)
 }
 
+export const TICKET_CREATE_SUCCESS = 'TICKET_CREATE_SUCCESS'
+const ticketCreateSuccess = ticket => ({
+  type: TICKET_CREATE_SUCCESS,
+  payload: ticket
+})
+
+export const createTicket = (data) => (dispatch) => {
+  console.log('TICKET DATA RECEIVED:', data)
+  request
+    .post(`${baseUrl}/tickets`)
+    .send(data)
+    .then(response => {
+      console.log("RESPONSE BODY:", response.body)
+      dispatch(ticketCreateSuccess(response.body))
+    })
+}
+
 export const COMMENT_ADDED = 'COMMENT_ADDED'
 const commentAdded = comment => ({
   type: COMMENT_ADDED,
