@@ -26,13 +26,6 @@ export const login = (username, password) => dispatch => {
     .catch(console.error)
 }
 
-
-
-
-
-
-
-
 // export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 // const signupSuccess = (jwt) => ({
 //   type: SIGNUP_SUCCESS,
@@ -81,7 +74,6 @@ export const getEvent = (id) => (dispatch) => {
   console.log('EVENT ID RECEIVED:', id)
   request(`${baseUrl}/events/${id}`)
     .then(response => {
-      // console.log(response.body)
       const event = response.body.event
       console.log('EVENT', event)
       dispatch(eventFetched(event))
