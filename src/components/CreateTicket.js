@@ -3,13 +3,13 @@ import React from 'react';
 class CreateTicket extends React.Component {
 
   render() {
-    const { onChange, onSubmit, events } = this.props
+    const { onChange, onSubmit, events, onClick } = this.props
 
     function eventsMenu(events) {
       if (!events) {
         return <p>Looking for active events...</p>
       }
-      return events.map(event => <option key={event.id} name={event.id}>{event.name}</option>)
+      return events.map(event => <option onClick={onClick} key={event.id} name={event.id}>{event.name}</option>)
     }
 
     return (
@@ -20,7 +20,7 @@ class CreateTicket extends React.Component {
           <form onSubmit={onSubmit}>
 
             <h5>Select event</h5>
-            <select onChange={onChange} name="eventName">
+            <select name="eventName">
               {eventsMenu(events)}
             </select>
             <br />
@@ -60,6 +60,8 @@ class CreateTicket extends React.Component {
             <input type="submit" value="Submit" />
           </form>
         </div>
+
+        <a href="/events">Back to events list</a>
 
       </main>
     )

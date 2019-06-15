@@ -37,6 +37,7 @@ class EventDetails extends React.Component {
 
     return (
       <main>
+        <Link to={`create/ticket`}>Submit ticket for this event</Link>
         {showEvent(event)}
         <br/>
 

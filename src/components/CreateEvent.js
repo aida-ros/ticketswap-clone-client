@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom'
 
 class CreateEvent extends React.Component {
   render() {
@@ -56,6 +57,9 @@ class CreateEvent extends React.Component {
 
             <input type="submit" value="Submit" />
           </form>
+          
+          <a href="/events">Back to events list</a>
+
         </div>
 
       </main>

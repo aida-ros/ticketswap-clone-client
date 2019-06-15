@@ -22,7 +22,9 @@ class EventsList extends React.Component {
 
     return (
       <main>
-        <Link to={`create`}>Create new event</Link>
+        <Link to={`create/event`}>Create new event</Link>
+        <br/>
+        <Link to={`create/ticket`}>Submit a ticket for an existing event</Link>
         <div className="eventslist">
           <h1>All available events</h1>
           <ul>
