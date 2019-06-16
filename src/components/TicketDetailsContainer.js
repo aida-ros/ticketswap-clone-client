@@ -2,7 +2,8 @@ import React from 'react';
 import TicketDetails from './TicketDetails.js'
 import CommentForm from './CommentForm'
 import { connect } from 'react-redux'
-import { getTicket, addComment, getComments } from '../actions'
+import { getTicket } from '../actions/tickets'
+import {addComment, getComments } from '../actions/comments'
 
 class TicketDetailsContainer extends React.Component {
   componentWillMount = () => {

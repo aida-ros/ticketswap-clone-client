@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import '../main.css'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 

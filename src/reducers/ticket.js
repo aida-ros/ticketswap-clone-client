@@ -1,4 +1,4 @@
-import { TICKET_FETCHED } from '../actions';
+import { TICKET_FETCHED } from '../actions/tickets';
 
 export const ticket = (state = [], action) => {
   switch (action.type) {

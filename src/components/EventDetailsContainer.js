@@ -1,7 +1,8 @@
 import React from 'react';
 import EventDetails from './EventDetails'
 import { connect } from 'react-redux'
-import { getEvent, getTickets } from '../actions'
+import { getEvent } from '../actions/events'
+import {getTickets } from '../actions/tickets'
 
 class EventDetailsContainer extends React.Component {
   componentDidMount = () => {

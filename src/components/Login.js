@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import '../main.css'
 
 class Login extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class Login extends React.Component {
     const onSubmit = this.props.onSubmit
 
     return (
-      <main>
+      <main className='form' align='center'>
         <div>
           
           <form onSubmit={onSubmit}>
@@ -39,6 +40,10 @@ class Login extends React.Component {
         <br />
         <div>
           <br />
+          <Link to={`signup`}>Click here to create an account</Link>
+          <br/>
+          ---
+          <br/> 
           <Link to={`events`}>...or proceed without an account</Link>
         </div>
       </main>

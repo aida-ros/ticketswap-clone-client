@@ -1,4 +1,4 @@
-import { COMMENT_ADDED, COMMENTS_FETCHED } from '../actions';
+import { COMMENT_ADDED, COMMENTS_FETCHED } from '../actions/comments';
 
 export const comments = (state = [], action) => {
   switch (action.type) {

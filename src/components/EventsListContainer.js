@@ -1,8 +1,7 @@
 import React from 'react';
 import EventsList from './EventsList'
 import { connect } from 'react-redux'
-import { getEvents } from '../actions'
-import { async } from 'q';
+import { getEvents } from '../actions/events'
 
 class EventsListContainer extends React.Component {
   componentDidMount = () => {
@@ -10,7 +9,7 @@ class EventsListContainer extends React.Component {
     this.props.getEvents()
   }
 
-  onClick = (event) => {
+  onNext = (event) => {
     let offset = 0
     const parsed = parseInt(event.target.name)
     
@@ -22,11 +21,24 @@ class EventsListContainer extends React.Component {
     event.target.name = newOffset
   }
 
+  onPrev = (event) => {
+    let offset = 0
+    const parsed = parseInt(event.target.name)
+    
+    offset = parsed - offset
+    this.props.getEvents(offset)
+
+    const prev = parsed - 9
+    const newOffset = prev.toString()
+    event.target.name = newOffset
+  }
+
   render() {
     return (
       <EventsList
         events={this.props.events}
-        onClick={this.onClick}
+        onNext={this.onNext}
+        // onPrev={this.onPrev}
       />
     )
   }
