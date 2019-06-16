@@ -7,7 +7,7 @@ class EventDetailsContainer extends React.Component {
   componentDidMount = () => {
     const id = this.props.match.params.id
     this.props.getEvent(id)
-    this.props.getTickets()
+    this.props.getTickets(id)
   }
 
   render() {
