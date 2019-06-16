@@ -1,7 +1,7 @@
 import React from 'react';
 import CreateTicket from './CreateTicket'
 import { connect } from 'react-redux'
-import { getEvents } from '../actions/events'
+import { getEvents, getEvent } from '../actions/events'
 import { createTicket } from '../actions/tickets'
 
 class CreateTicketContainer extends React.Component {
@@ -13,14 +13,17 @@ class CreateTicketContainer extends React.Component {
   }
 
   componentWillMount = () => {
+    const id = this.props.match.params.id
     this.props.getEvents()
-  }
+    this.props.getEvent(id)
+}
+  
 
-handleChange = (event) => {
+onClick = (event) => {
   console.log('EVENT TARGET', event.target)
   alert(this.options[this.selectedIndex].text)
-  const eventId = event.target.value
-  alert('worked')
+  const eventName = event.target.value
+  console.log(eventName)
 
 }
 
@@ -51,6 +54,7 @@ render() {
       onSubmit={this.onSubmit}
       onClick={this.onClick}
       events={this.props.events}
+      currentEvent={this.props.event}
     />
   )
 }
@@ -58,11 +62,13 @@ render() {
 
 const mapStateToProps = state => ({
   events: state.events,
+  event: state.event,
   currentUser: state.currentUser
 })
 
 const mapDispatchToProps = {
   getEvents,
+  getEvent,
   createTicket
 }
 

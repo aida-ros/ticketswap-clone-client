@@ -34,7 +34,7 @@ class EventsList extends React.Component {
           <Link to={`create/event`}>Create new event</Link>
           <br />
           <br />
-          <Link to={`create/ticket`}>Submit a ticket for an existing event</Link>
+          
           <div className="eventslist">
             <br />
             <Typography variant="h2">

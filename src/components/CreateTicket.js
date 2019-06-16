@@ -7,13 +7,20 @@ import Typography from '@material-ui/core/Typography'
 class CreateTicket extends React.Component {
 
   render() {
-    const { onChange, onSubmit, events, handleChange } = this.props
+    
+    const { 
+      onChange,
+      onSubmit,
+      events,
+      currentEvent,
+      handleChange
+     } = this.props
 
     function eventsMenu(events) {
       if (!events) {
         return <p>Looking for active events...</p>
       }
-      return events.map(event => <option value={event.id} key={event.id} name={event.id}>{event.name}</option>)
+      return events.map(event => <option onChange={onChange} value={event.id} key={event.id} name={event.id}>{event.name}</option>)
     }
 
     return (
@@ -27,13 +34,15 @@ class CreateTicket extends React.Component {
 
 
 
-              <h5>Select an event</h5>
-              <select
+              <h4>Submitting ticket for: {currentEvent.name}</h4>
+              
+              {/* <select
                 name="eventName"
-                onChange={handleChange}
+                onChange={onChange}
+                value={this.value}
                 >
                 {eventsMenu(events)}
-              </select>
+              </select> */}
               <br />
 
               <h5>Set price</h5>
@@ -85,7 +94,7 @@ class CreateTicket extends React.Component {
             </form>
           </div>
           <br />
-          <a href="/events">Back to events list</a>
+          {/* <a href="/events">Back to events list</a> */}
         </main>
       </Grid>
     )

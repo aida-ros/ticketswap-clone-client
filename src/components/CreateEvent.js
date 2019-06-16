@@ -77,7 +77,7 @@ class CreateEvent extends React.Component {
 
             </form>
             <br />
-            <a href="/events">Back to events list</a>
+            {/* <a href="/events">Back to events list</a> */}
 
           </div>
 

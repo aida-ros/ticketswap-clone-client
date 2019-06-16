@@ -17,7 +17,7 @@ function App() {
       <Route exact path="/signup" component={SignUpContainer} />
       <Route exact path="/events" component={EventsListContainer} />
       <Route exact path="/create/event" component={CreateEventContainer} />
-      <Route exact path="/create/ticket" component={CreateTicketContainer} />
+      <Route exact path="/events/:id/create/ticket" component={CreateTicketContainer} />
       <Route exact path="/events/:id" component={EventDetailsContainer} />
       <Route exact path="/events/:id/tickets/:id" component={TicketDetailsContainer} />
     </div>
