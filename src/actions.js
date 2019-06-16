@@ -11,12 +11,11 @@ const loginSuccess = (jwt) => ({
 
 export const login = (username, password) => dispatch => {
   console.log("LOGIN FUNCTION")
-  console.log()
   const name = username
   const pass = password
 
   request
-    .post(`${baseUrl}/users`)
+    .post(`${baseUrl}/logins`)
     .send({ username: name, password: pass })
     .then(response => {
       console.log('RESPONSE BODY:', response.body)
@@ -33,7 +32,6 @@ export const login = (username, password) => dispatch => {
 // })
 
 export const signup = (username, password) => dispatch => {
-
   request
     .post(`${baseUrl}/users`)
     .send({ username, password })
@@ -106,8 +104,8 @@ const ticketsFetched = tickets => ({
   payload: tickets
 })
 
-export const getTickets = () => (dispatch) => {
-  request(`${baseUrl}/tickets`)
+export const getTickets = (id) => (dispatch) => {
+  request(`${baseUrl}/tickets/${id}`)
     .then(response => {
       const allTickets = response.body.tickets
       dispatch(ticketsFetched(allTickets))
