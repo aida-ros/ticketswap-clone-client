@@ -2,7 +2,6 @@ import React from 'react';
 import Login from './Login'
 import { connect } from 'react-redux'
 import { signup } from '../actions/login'
-import { Link } from "react-router-dom";
 
 class LoginContainer extends React.Component {
   state = {

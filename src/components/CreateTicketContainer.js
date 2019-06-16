@@ -6,6 +6,7 @@ import { createTicket } from '../actions/tickets'
 
 class CreateTicketContainer extends React.Component {
   state = {
+    userId: this.props.currentUser,
     price: '',
     image: '',
     description: '',
@@ -56,7 +57,8 @@ render() {
 }
 
 const mapStateToProps = state => ({
-  events: state.events
+  events: state.events,
+  currentUser: state.currentUser
 })
 
 const mapDispatchToProps = {
