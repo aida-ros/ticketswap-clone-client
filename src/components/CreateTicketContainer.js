@@ -7,6 +7,7 @@ import { createTicket } from '../actions/tickets'
 class CreateTicketContainer extends React.Component {
   state = {
     userId: this.props.currentUser,
+    eventId: this.props.event.id,
     price: '',
     image: '',
     description: '',

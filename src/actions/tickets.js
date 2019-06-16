@@ -31,6 +31,7 @@ const riskCalculated = riskRate => ({
 })
 
 export const getTicket = (id) => (dispatch) => {
+  console.log('WAS THIS CALLED?')
   request(`${baseUrl}/events/tickets/${id}`)
     .then(response => {
       console.log('VERRRRY IMPORTANTE', response.body)

@@ -5,8 +5,9 @@ import '../main.css'
 class TicketDetails extends React.Component {
 
   render() {
-    console.log(this.props.riskRate)
+    console.log('Risk rate', this.props.riskRate)
     const { ticket, comments, riskRate } = this.props
+    
 
     function showTicket(ticket) {
       if (!ticket && riskRate) {
@@ -36,8 +37,13 @@ class TicketDetails extends React.Component {
       if (!comments) {
         return <p>No comments have been added yet</p>
       }
-      return comments.map(comment =>
-        <p key={comment.id}>Commented at {comment.createdAt}:<br /> {comment.content}</p>
+      return comments.map(comment => {
+        
+        return <p key={comment.id}>Commented at {comment.createdAt}:
+        <br />
+        <br/> "{comment.content}"</p>
+      }
+        
       )
     }
 

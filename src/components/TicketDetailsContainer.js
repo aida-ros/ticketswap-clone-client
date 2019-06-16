@@ -9,7 +9,7 @@ class TicketDetailsContainer extends React.Component {
   componentWillMount = () => {
     const id = this.props.match.params.id
     this.props.getTicket(id)
-    this.props.getComments()
+    this.props.getComments(id)
   }
   
   state = {
