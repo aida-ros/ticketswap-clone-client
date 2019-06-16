@@ -7,8 +7,6 @@ class CreateEventContainer extends React.Component {
   state = {}
 
   onChange = (event) => {
-    // console.log("EVENT.TARGET.NAME", event.target.name)
-    // console.log("EVENT.TARGET.VALUE", event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })

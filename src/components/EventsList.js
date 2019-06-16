@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 class EventsList extends React.Component {
 
   render() {
-    const events = this.props.events
+    const { events, onClick } = this.props
     console.log(events)
 
     function showEvents(events) {
@@ -31,7 +31,7 @@ class EventsList extends React.Component {
       >
         <main>
           <Link to={`create/event`}>Create new event</Link>
-          <br />
+          <br/>
           <br/>
           <Link to={`create/ticket`}>Submit a ticket for an existing event</Link>
           <div className="eventslist">
@@ -42,6 +42,7 @@ class EventsList extends React.Component {
             <ul>
               {showEvents(events)}
             </ul>
+            <button onClick={onClick} name='9'>Next</button>
           </div>
         </main>
 
