@@ -37,7 +37,8 @@ class EventDetails extends React.Component {
           return <Link
             to={`${event.id}/tickets/${ticket.id}`}
             key={ticket.id}>
-            €{ticket.price} submitted by userId{ticket.userId} <br />
+            €{ticket.price} submitted by userId{ticket.userId} 
+            <br/><br/>
           </Link>
         }
       })
@@ -54,11 +55,12 @@ class EventDetails extends React.Component {
           {/* <a href="create/ticket">Submit ticket for this event</a> */}
           {showEvent(event)}
           <br />
-          <Link to={`${event.id}/create/ticket`}>Submit a ticket for an existing event</Link>
+          <Link to={`${event.id}/create/ticket`}>Submit a ticket for this event</Link>
           <div className="eventslist"></div>
           
           <Typography variant="h4">
               Available tickets
+              <br/>
           </Typography>
           {availableTickets(tickets)}
         </main>
