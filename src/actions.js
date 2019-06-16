@@ -15,7 +15,7 @@ export const login = (username, password) => dispatch => {
   const pass = password
 
   request
-    .post(`${baseUrl}/users`)
+    .post(`${baseUrl}/logins`)
     .send({ username: name, password: pass })
     .then(response => {
       console.log('RESPONSE BODY:', response.body)
