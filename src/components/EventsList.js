@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import '../main.css'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
 class EventsList extends React.Component {
 
   render() {
-    const { events, onClick } = this.props
+    const { events, onNext, onPrev } = this.props
     console.log(events)
 
     function showEvents(events) {
@@ -31,9 +32,9 @@ class EventsList extends React.Component {
       >
         <main>
           <Link to={`create/event`}>Create new event</Link>
-          <br/>
-          <br/>
-          <Link to={`create/ticket`}>Submit a ticket for an existing event</Link>
+          <br />
+          <br />
+          
           <div className="eventslist">
             <br />
             <Typography variant="h2">
@@ -42,7 +43,9 @@ class EventsList extends React.Component {
             <ul>
               {showEvents(events)}
             </ul>
-            <button onClick={onClick} name='9'>Next</button>
+
+            {/* <button onClick={onPrev} name='9'>Previous</button> */}
+            <button onClick={onNext} name='9'>Next</button>
           </div>
         </main>
 

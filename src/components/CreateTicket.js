@@ -1,23 +1,31 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import '../main.css'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
 class CreateTicket extends React.Component {
 
   render() {
-    const { onChange, onSubmit, events, onClick } = this.props
+    
+    const { 
+      onChange,
+      onSubmit,
+      events,
+      currentEvent,
+      handleChange
+     } = this.props
 
     function eventsMenu(events) {
       if (!events) {
         return <p>Looking for active events...</p>
       }
-      return events.map(event => <option onClick={onClick} key={event.id} name={event.id}>{event.name}</option>)
+      return events.map(event => <option onChange={onChange} value={event.id} key={event.id} name={event.id}>{event.name}</option>)
     }
 
     return (
       <Grid>
-        <main align='center'>
+        <main className='form' align='center'>
           <Typography variant="h3">
             Create new ticket
           </Typography>
@@ -26,10 +34,15 @@ class CreateTicket extends React.Component {
 
 
 
-              <h5>Select an event</h5>
-              <select name="eventName">
+              <h4>Submitting ticket for: {currentEvent.name}</h4>
+              
+              {/* <select
+                name="eventName"
+                onChange={onChange}
+                value={this.value}
+                >
                 {eventsMenu(events)}
-              </select>
+              </select> */}
               <br />
 
               <h5>Set price</h5>
@@ -80,8 +93,8 @@ class CreateTicket extends React.Component {
               <input type="submit" value="Submit" />
             </form>
           </div>
-          <br/>
-          <a href="/events">Back to events list</a>
+          <br />
+          {/* <a href="/events">Back to events list</a> */}
         </main>
       </Grid>
     )

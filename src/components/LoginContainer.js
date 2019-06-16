@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './Login'
 import { connect } from 'react-redux'
-import { login } from '../actions'
+import { login } from '../actions/login'
 import { Link } from "react-router-dom";
 
 class LoginContainer extends React.Component {
@@ -30,12 +30,11 @@ class LoginContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>Log in</h1>
+        <h1 align='center'>Log in</h1>
         <Login
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
-        <Link to={`signup`}>Click here to create an account</Link>
       </div>
     )
   }

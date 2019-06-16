@@ -1,4 +1,4 @@
-import { RISK_CALCULATED } from '../actions';
+import { RISK_CALCULATED } from '../actions/tickets';
 
 export const riskRate = (state = null, action) => {
   switch (action.type) {

@@ -1,6 +1,8 @@
 import React from 'react';
+import '../main.css'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 class CreateEvent extends React.Component {
   render() {
@@ -8,14 +10,15 @@ class CreateEvent extends React.Component {
     const onSubmit = this.props.onSubmit
 
     return (
-      <main align='center'>
-        <Typography variant="h3">
-          Create new event
+      <Grid>
+        <main className='form' align='center'>
+          <Typography variant="h3">
+            Create new event
         </Typography>
-        <div>
-          <form onSubmit={onSubmit}>
-            
-          <TextField
+          <div>
+            <form onSubmit={onSubmit}>
+
+              <TextField
                 id="outlined-name"
                 label="Event name"
                 margin="normal"
@@ -24,17 +27,9 @@ class CreateEvent extends React.Component {
                 type="text"
                 name="name"
               />
-            
-            {/* <label>
-              <input 
-                onChange={onChange}
-                type="text" 
-                placeholder="Event name" 
-                name="name" />
-            </label> */}
-            <br />
+              <br />
 
-            <TextField
+              <TextField
                 id="outlined-name"
                 label="Add image 'http://...'"
                 margin="normal"
@@ -43,17 +38,9 @@ class CreateEvent extends React.Component {
                 type="url"
                 name="image"
               />
+              <br />
 
-            {/* <label>
-              <input 
-                onChange={onChange}
-                type="url"
-                placeholder="http://www.example-url.com'" 
-                name="image" />
-            </label> */}
-            <br />
-
-            <TextField
+              <TextField
                 id="outlined-name"
                 label="Description"
                 margin="normal"
@@ -62,17 +49,10 @@ class CreateEvent extends React.Component {
                 type="text"
                 name="description"
               />
+              <br />
 
-            {/* <label>
-              <input 
-                onChange={onChange} 
-                type="text" 
-                placeholder="Description" 
-                name="description" />
-            </label> */}
-            <br />
-            Start date <br/>
-            <TextField
+              Start date <br />
+              <TextField
                 id="outlined-name"
                 margin="normal"
                 variant="outlined"
@@ -80,18 +60,10 @@ class CreateEvent extends React.Component {
                 type="date"
                 name="start"
               />
+              <br />
 
-            {/* <label>Start date <br />
-              <input 
-                onChange={onChange} 
-                type="date" 
-                min="2019-06-12" 
-                name="start" />
-            </label> */}
-            <br />
-
-            End date <br/>
-            <TextField
+              End date <br />
+              <TextField
                 id="outlined-name"
                 margin="normal"
                 variant="outlined"
@@ -99,22 +71,18 @@ class CreateEvent extends React.Component {
                 type="date"
                 name="end"
               />
+              <br />
 
-            {/* <label>End date <br />
-              <input 
-                onChange={onChange} 
-                type="date" 
-                name="end" />
-            </label> */}
+              <input type="submit" value="Submit" />
+
+            </form>
             <br />
-            <input type="submit" value="Submit" />
-          </form>
-          <br />
-          <a href="/events">Back to events list</a>
+            {/* <a href="/events">Back to events list</a> */}
 
-        </div>
+          </div>
 
-      </main>
+        </main>
+      </Grid>
     )
   }
 }

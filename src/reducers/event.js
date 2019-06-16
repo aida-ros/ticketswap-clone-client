@@ -1,4 +1,4 @@
-import { EVENT_FETCHED } from '../actions';
+import { EVENT_FETCHED } from '../actions/events';
 
 export const event = (state = [], action) => {
   switch (action.type) {

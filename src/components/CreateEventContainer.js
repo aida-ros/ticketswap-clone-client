@@ -1,7 +1,7 @@
 import React from 'react';
 import CreateEvent from './CreateEvent'
 import { connect } from 'react-redux'
-import { createEvent } from '../actions'
+import { createEvent } from '../actions/events'
 
 class CreateEventContainer extends React.Component {
   state = {}
