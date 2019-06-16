@@ -50,8 +50,10 @@ const eventsFetched = events => ({
   payload: events
 })
 
-export const getEvents = () => (dispatch) => {
+export const getEvents = (offset) => (dispatch) => {
+  console.log('GET EVENTS CALLED')
   request(`${baseUrl}/events`)
+    .query({ offset })
     .then(response => {
       // console.log(response.body)
       const allEvents = response.body.events
@@ -104,8 +106,8 @@ const ticketsFetched = tickets => ({
   payload: tickets
 })
 
-export const getTickets = (id) => (dispatch) => {
-  request(`${baseUrl}/tickets/${id}`)
+export const getTickets = () => (dispatch) => {
+  request(`${baseUrl}/tickets`)
     .then(response => {
       const allTickets = response.body.tickets
       dispatch(ticketsFetched(allTickets))

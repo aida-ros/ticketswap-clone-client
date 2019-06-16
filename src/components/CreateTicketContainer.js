@@ -14,10 +14,6 @@ class CreateTicketContainer extends React.Component {
     this.props.getEvents()
   }
 
-  onClick = (event) => {
-    console.log('WHAHHWHHA',event)
-  }
-
   onChange = (event) => {
     console.log("EVENT.TARGET.NAME", event.target.name)
     console.log("EVENT.TARGET.VALUE", event.target.value)
