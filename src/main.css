@@ -28,6 +28,46 @@ ul {
   justify-content: center;
 }
 
+.link {
+  color: rgba(30, 138, 142, 0.865);
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 15px;
+}
+
+.link-event {
+  color: rgba(30, 138, 142, 0.865);
+  text-decoration: none;
+  font-size: 30px;
+  margin-top: 15px;
+  margin-bottom: -15px;
+}
+
+.event-link {
+  color: rgba(220, 56, 27, 0.865);
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 15px;
+}
+
+.commentbox {
+  margin-left: 186px;
+}
+
+button {
+  background-color: rgba(75, 189, 182, 0.557);
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  color: white
+}
+
+input {
+  margin: 13px;
+  width: 200px; 
+}
+
 p {
   line-height: 25px;
+  font-size: 18px;
 }

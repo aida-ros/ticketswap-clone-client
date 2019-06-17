@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import '../main.css'
+import { Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
@@ -16,12 +17,13 @@ class CreateTicket extends React.Component {
       handleChange
      } = this.props
 
-    function eventsMenu(events) {
-      if (!events) {
-        return <p>Looking for active events...</p>
-      }
-      return events.map(event => <option onChange={onChange} value={event.id} key={event.id} name={event.id}>{event.name}</option>)
-    }
+
+    // function eventsMenu(events) {
+    //   if (!events) {
+    //     return <p>Looking for active events...</p>
+    //   }
+    //   return events.map(event => <option onChange={onChange} value={event.id} key={event.id} name={event.id}>{event.name}</option>)
+    // }
 
     return (
       <Grid>
@@ -31,11 +33,7 @@ class CreateTicket extends React.Component {
           </Typography>
           <div>
             <form onSubmit={onSubmit}>
-
-
-
-              <h4>Submitting ticket for: {currentEvent.name}</h4>
-              
+              <h4>Submitting ticket for: {currentEvent.name}</h4>            
               {/* <select
                 name="eventName"
                 onChange={onChange}
@@ -94,7 +92,7 @@ class CreateTicket extends React.Component {
             </form>
           </div>
           <br />
-          {/* <a href="/events">Back to events list</a> */}
+          <Link to={`/events`}>Go back to events list</Link>
         </main>
       </Grid>
     )

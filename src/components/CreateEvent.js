@@ -1,5 +1,6 @@
 import React from 'react';
 import '../main.css'
+import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
@@ -77,7 +78,7 @@ class CreateEvent extends React.Component {
 
             </form>
             <br />
-            {/* <a href="/events">Back to events list</a> */}
+            <Link to={`/events`}>Go back to events list</Link>
 
           </div>
 

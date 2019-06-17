@@ -2,7 +2,6 @@ import React from 'react';
 import Login from './Login'
 import { connect } from 'react-redux'
 import { login } from '../actions/login'
-import { Link } from "react-router-dom";
 
 class LoginContainer extends React.Component {
   state = {
@@ -11,7 +10,6 @@ class LoginContainer extends React.Component {
   }
 
   onChange = event => {
-    console.log(this.state.username, this.state.password)
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -19,7 +17,7 @@ class LoginContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    console.log('Form submitted!')
+    console.log('Login form submitted!')
     this.props.login(this.state.username, this.state.password);
     this.setState({
       username: '',

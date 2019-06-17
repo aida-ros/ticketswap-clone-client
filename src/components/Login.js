@@ -40,11 +40,15 @@ class Login extends React.Component {
         <br />
         <div>
           <br />
-          <Link to={`signup`}>Click here to create an account</Link>
+          <Link className='link' to={`signup`}>Click here to create an account</Link>
+          <br/>
+          ---
+          <br/>
+          <Link className='link' to={`login`}>Already have an account? Click to log in</Link>
           <br/>
           ---
           <br/> 
-          <Link to={`events`}>...or proceed without an account</Link>
+          <Link className='link' to={`events`}>Go to events page</Link>
         </div>
       </main>
     );
