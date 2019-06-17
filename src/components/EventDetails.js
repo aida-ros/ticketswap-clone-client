@@ -19,9 +19,12 @@ class EventDetails extends React.Component {
         <Typography variant="h2">
           Event details
         </Typography>
-        <p>Name: {event.name}</p>
-        <p>Date: {event.start} - {event.end}</p>
-        <p>Description: {event.description}</p>
+        <h2>{event.name}</h2>
+        <p>Date <br/> {event.start} - {event.end}</p>
+        <br/>
+        <p>{event.description}</p>
+        <br/>
+        <img src={event.image} alt="ticket" width="400" height="250" />
       </div>
     }
 
@@ -56,6 +59,7 @@ class EventDetails extends React.Component {
           {showEvent(event)}
           <br />
           <Link to={`${event.id}/create/ticket`}>Submit a ticket for this event</Link>
+          <br/>
           <div className="eventslist"></div>
           
           <Typography variant="h4">
