@@ -10,7 +10,6 @@ class LoginContainer extends React.Component {
   }
 
   onChange = event => {
-    console.log(this.state.username, this.state.password)
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -18,13 +17,12 @@ class LoginContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    console.log('Form submitted!')
+    console.log('Signup form submitted!')
     this.props.signup(this.state.username, this.state.password);
     this.setState({
       username: '',
       password: ''
     })
-    console.log(this.state)
   };
 
   render() {

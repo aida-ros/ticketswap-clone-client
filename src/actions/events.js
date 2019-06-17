@@ -36,7 +36,6 @@ export const getEvent = (id) => (dispatch) => {
   request(`${baseUrl}/events/${id}`)
     .then(response => {
       const event = response.body.event
-      console.log('EVENT', event)
       dispatch(eventFetched(event))
     })
     .catch(console.error)

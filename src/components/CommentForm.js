@@ -7,7 +7,7 @@ class CommentForm extends React.Component {
     const onSubmit = this.props.onSubmit
 
     return (
-      <main>
+      <main className='commentbox'>
         <div>
           <form onSubmit={onSubmit}>
             <br />
@@ -21,7 +21,7 @@ class CommentForm extends React.Component {
             </label>
             <br />
 
-            <button type="submit">Add comment</button>
+            <button type="submit">Add</button>
           </form>
         </div>
       </main>

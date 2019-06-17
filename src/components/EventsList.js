@@ -16,7 +16,9 @@ class EventsList extends React.Component {
       }
       return events.map(event =>
         <li key={event.id}>
-          <Link to={`events/${event.id}`}>
+          <Link
+            to={`events/${event.id}`}
+            className='event-link'>
             {event.name}<br />
           </Link>
           Starting on: {event.start}
@@ -31,10 +33,20 @@ class EventsList extends React.Component {
         alignItems="center"
       >
         <main>
-          <Link to={`create/event`}>Create new event</Link>
+          <Link
+            to={`/signup`}
+            className='link'>Still need to sign up? Click here</Link>
+          <br />
+          <Link
+            to={`/login`}
+            className='link'>Forgot to log in? Click here</Link>
+          <br />
+          <Link
+            to={`create/event`}
+            className='link-event'>Create new event</Link>
           <br />
           <br />
-          
+
           <div className="eventslist">
             <br />
             <Typography variant="h2">
