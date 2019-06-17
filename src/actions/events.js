@@ -13,9 +13,12 @@ export const getEvents = (offset) => (dispatch) => {
   request(`${baseUrl}/events`)
     .query({ offset })
     .then(response => {
-      // console.log(response.body)
       const allEvents = response.body.events
-      // console.log(allEvents)
+      // const today = new Date()
+      // const activeEvents = allEvents.map(event => {
+      //   // if (event.end)
+      //   console.log(event.end)
+      // })
       dispatch(eventsFetched(allEvents))
     })
     .catch(console.error)
